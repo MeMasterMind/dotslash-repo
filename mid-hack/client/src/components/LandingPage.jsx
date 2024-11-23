@@ -1,4 +1,4 @@
-import Navbar from './NavbarL'
+import NavbarL from './NavbarL'
 import Hero from './Hero'
 import Features from './Features'
 import WhatWeDo from './WhatWeDo'
@@ -7,10 +7,10 @@ import Contact from './Contact'
 import Footer from './Footer'
 import '../App.css'
 
-function LandingPage() {
+function LandingPage({user}) {
   return (
     <div className="App">
-      <Navbar />
+      <NavbarL  user={user}/>
       <Hero />
       <Features />
       <WhatWeDo />

@@ -1,14 +1,22 @@
+import React, { useEffect, useState } from 'react';
 
-const Navbar = () => {
+const Navbar = ({user}) => {
   return (
     <nav className="navbar">
       <div className="logo">Techtonic</div>
       <div className="nav-links active">
-        {/* <a href="#what" className="flex items-center">What</a>
-        <a href="#why" className="flex items-center">Why</a>
-        <a href="#how" className="flex items-center text-2xl">How</a> */}
-        <a href="#" className="btn btn-secondary">Contact</a>
-        <a href="#" className="btn btn-primary">Sign In</a>
+        {user ? (
+          <>
+            <a href="#how" className="flex items-center text-2xl">Hi, {user.firstName}</a>
+            <a href="/dashboard" className="btn btn-primary">Dashboard</a>
+          </>
+        ) : (
+          <>
+            <a href="#" className="btn btn-secondary">Contact Us</a>
+            <a href="http://localhost:3000/auth/google" className="btn btn-primary">Sign In</a>
+          </>
+        )
+        }
       </div>
     </nav>
   )

@@ -18,12 +18,28 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('Form submitted:', formData)
-    // Here you would typically send the form data to a server
-    alert('Form submitted! (This is a placeholder action)')
+    fetch('http://localhost:3000/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .then(
+        setFormData({
+          name: '',
+          email: '',
+          message: '',
+        })
+      )
+      .then(alert('Form submitted!'))
+      .catch(err => console.error(err))
   }
 
   return (
-    <section className="contact">
+    <section className="contact" id="contact">
       <h2>Get in Touch</h2>
       <form className="contact-form" onSubmit={handleSubmit}>
         <input
