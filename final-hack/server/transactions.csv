@@ -1,0 +1,2 @@
+User,Card,Year,Month,Day,Time,Amount,Use Chip,Merchant Name,Merchant City,Merchant State,Zip,MCC,Errors?,Is Fraud?
+0,0,2024,11,23,23:39,$1222222222222,true,22312,322,23233,23123123,2313,Insufficient Balance,No

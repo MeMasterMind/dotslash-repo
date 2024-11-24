@@ -27,7 +27,7 @@ app.use(express.static(path.join(path.resolve(), 'public')));
 app.use(express.json());
 app.use(
   cors({
-    origin: 'http://localhost:3000', // React app URL
+    origin: process.env.FRONTEND_URL, // React app URL
     credentials: true,
   })
 );
@@ -96,7 +96,10 @@ passport.deserializeUser(async (id, done) => {
 });
 
 // Routes
-app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+app.get('/', (req, res)=>{
+  res.redirect(`${process.env.FRONTEND_URL}/`);
+})
+app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'], prompt: 'select_account consent' }));
 
 app.get(
   '/auth/google/callback',

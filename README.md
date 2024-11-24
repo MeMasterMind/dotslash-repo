@@ -1,81 +1,145 @@
-r# dotslash-repo
 
-## Welcome to the dotslash Hackathon Repository! 🚀
+# Transaction Compliance Tool: Anomaly Detection and Explainable AI  
 
-### Instructions:
-- **Fork this repository**: Only one member from each team must fork this repository to their own GitHub account.
-- **Commit directly to your fork**: All submissions, code, and documentation must be committed to your fork. This repository will serve as your primary workspace during the hackathon.
+![Anomaly Detection](https://img.shields.io/badge/Anomaly%20Detection-Isolation%20Forest-brightgreen)
+![Explainability](https://img.shields.io/badge/Explainability-SHAP-blue)
+![Python](https://img.shields.io/badge/Python-3.8%2B-yellow)
+![NodeJS](https://img.shields.io/badge/NodeJS-22.11%2B-green)
 
-- [Rulebook and Sponsor Problem Statements](https://tanmayrainanda.craft.me/dotslash-info-repo)
----
 
-## Requirements
+## Overview  
 
-1. **Pitch Deck**  
-   - All submissions must include a **pitch deck** explaining your idea and its implementation.  
+In today’s stringent regulatory environment, businesses must manage complex compliance requirements effectively. Our comprehensive transaction compliance solution combines advanced analytics, machine learning, and a multilingual chatbot interface to streamline compliance, detect anomalies, and maintain financial oversight. 
+
+
+
+## Key Functionalities
+
+### 1. Fault and Anomaly Detection
+- **Real-Time Monitoring**: Live overview of compliance health.
+- **Isolation Forest Algorithm**: Identifies irregular transaction patterns and isolates anomalies early.
+
+### 2. User-Specific Data Input and Adaptive Learning
+- **Customizable Data Input**: Add individual transaction records without uploading entire files.
+- **Model Re-Training**: Continuously adapts to updated datasets for improved anomaly detection.
+
+### 3. Suspicious Activity Analysis
+- **Comprehensive Scanning**: Analyzes transaction patterns and client profiles for fraud detection.
+- **Risk Assessment Models**: Quantifies and prioritizes risks for effective response.
+
+### 4. Machine Learning-Driven Compliance
+- **Automated Processes**: Frees up resources by automating compliance tasks.
+- **Predictive Insights**: Mitigates risks proactively with advanced analytics.
+- **Continuous Learning**: Adapts to new data and regulatory updates.
+
+### 5. Multilingual Chatbot Integration for Financial Guidance
+- **Real-Time Assistance**: Open Web UI integrated with LLaMA for multilingual support.
+- **Analytical Insights**: Data-driven responses and financial forecasts.
+
+## Detecting Faults and Anomalies in Transaction Data
+
+### Process
+1. **Data Ingestion**: Securely ingest financial data in real-time or add individual transactions.
+2. **Anomaly Detection**: Isolation Forest algorithm retrains with each input for precision.
+3. **Automated Alerts**: Immediate alerts for proactive compliance actions.
+4.  **95% Model Accuracy**:
+![model accuracy](https://i.imgur.com/e5x9Fa9.jpeg)
+
+## Solution Overview
+
+Our transaction compliance solution streamlines financial processes, detects compliance risks early, and enhances financial oversight by leveraging:
+- Sophisticated machine learning models.
+- Customizable data input.
+- Multilingual support:
+![multilingual support ](https://i.imgur.com/G5G3nPy.jpeg)
+
+## Technologies Used  
+### Machine Learning
+- *Programming Language*: Python 3.8+ 
+- *Libraries*:
+  - pandas – Data manipulation.
+  - scikit-learn – Machine learning algorithms (Isolation Forest).
+  - shap – Explainable AI.
+  - matplotlib – Visualization.
+  - pickle – Model persistence.  
+ ### Web App
+ - *Programming Language*: Javascript
+ - *Libraries & Tools*:
+   - Node JS / Express  - Backend server setup
+   - Mongo DB - Database to store user data
+   - multer, csv-writer & csv-parser - To Manipulate data recieved through http requests and feed it into our ML model
+   - child_process - to run the ML model directly in our NodeJS environment
+   - React - Front-end
+   - Lucide Icons - Icon library
+
+
+## Installation  & How to use
+
+1. Clone the repository:  
+ ```bash
+ git clone https://github.com/memastermind/dotslash-repo.git
+ cd final-hack
+   ```
+
+2. Run the front-end:
+```bash
+cd client
+npm install
+npm run dev
+or
+npm build
+```
    
-2. **Well-Commented Code**  
-   - Ensure that all code is well-documented with comments and follows standard coding practices.  
-   
-3. **Mid-Hack Folder**  
-   - Create a folder named `mid-hack` in your fork. This folder should contain all materials required for the **mid-hack submission**, including progress updates, initial implementation, and any supporting files.  
 
-4. **Citation File**  
-   - Include a `citations.md` file in your repository. All external resources (e.g., articles, tutorials, code snippets) must be properly cited here. Failure to do so may result in your project being flagged for plagiarism.
+3. Start the server, along with the ML model:
+```bash
+cd ..
+cd server
+npm install
+npm start
+```
+4. Run the chat bot locally (it will automatically connect to our app):
+- download [llama3.2:1b](https://ollama.com/library/llama3.2:1b)
+- run [docker desktop](https://www.docker.com/products/docker-desktop/)
+-  open a new terminal instance on your pc and run:
+```bash
+docker run -d -p 6969:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+```
+5. The app is up and running!! Go to the url mentioned in your terminal to view it. Make sure to checkout `server/transactions.csv` to get an idea of the required transaction fields (this is also available in the dashboard ui). 
 
-5. **End-Hack Folder**  
-   - Create a folder named `end-hack` in your fork. This folder should contain all materials for the **final submission**, including the completed project, pitch deck, and any supplementary resources.
 
----
+## Example Outputs  
 
-## Suggestions for Participants
+### 1. Anomalies Detected  
+via form filling or direct CSV upload:
+![running program GIF](https://i.imgur.com/lnxuurF.gif)
+  
+  
+### 2. Scatter Plot  
+A scatter plot showing anomalies in the Amount column is displayed with anomalies in red.  (Development only)
 
-1. **Maintain Clean and Consistent Code**  
-   - Use comments and docstrings to document your code.  
-   - Follow a consistent naming convention for files, functions, and variables to improve readability.
+![Scatter Plot](https://i.imgur.com/OhOpvyq.jpeg)
 
-2. **Commit Regularly**  
-   - Push commits frequently rather than submitting a single large commit at the end.  
-   - This practice not only showcases your progress but also helps in avoiding plagiarism issues.
 
-3. **Version Control Best Practices**  
-   - Use branches for major features or experimental changes and merge them into the main branch after testing.  
-   - Write clear, concise commit messages for better traceability.
+## Future Enhancements  
 
-4. **Utilize GitHub Issues and Pull Requests**  
-   - Track tasks and discussions using GitHub Issues.  
-   - Use Pull Requests (PRs) to review and merge changes within your team. This will help in maintaining a collaborative workflow.
+1. *Additional Features*:
+   - Incorporate other columns like Merchant Name, Transaction Time, and Is Fraud? for enhanced analysis.  
+2. *Real-Time Stream Integration*:
+   - Enable detection in real-time transaction streams.  
+3. *Interactive UI*:
+   - Build a front-end dashboard for easier interaction and insights visualization.  
+4. *Advanced Explainability*:
+   - Add interactive SHAP visualizations for detailed feature importance analysis.  
+5. *Regulatory Compliance*:
+   - Extend to meet compliance standards such as PCI DSS and GDPR.  
 
----
 
-## Submission Guidelines
+## Contributing  
 
-- **Mid-Hack Checkpoint**  
-  Submit the contents of your `mid-hack` folder by the designated checkpoint time. This will include progress updates and preliminary work.
+Contributions are welcome! Please fork the repository, create a branch, and submit a pull request.  
 
-- **Final Submission**  
-  Ensure that all files for your final project are stored in the `end-hack` folder. Your pitch deck and `citations.md` file must also be updated and included here.  
 
----
+## License  
 
-## Resources
-
-1. **Git and GitHub Basics**  
-   - If you’re new to Git, check out these resources:  
-     - [Git Documentation](https://git-scm.com/doc)  
-     - [GitHub Guides](https://guides.github.com/)  
-
-2. **Project Ideas**  
-   - Explore hackathon project examples for inspiration:  
-     - [DevPost](https://devpost.com/)  
-     - [Awesome Hackathon Projects](https://github.com/daveverwer/awesome-hackathon-projects)  
-
----
-
-## Code of Conduct
-
-By participating in this hackathon, you agree to follow the event’s Code of Conduct. Be respectful, inclusive, and ensure a positive experience for all participants.  
-
-For any queries or support, feel free to contact the organizing team.  The full code of conduct can be found at [Fest Website](https://www.fitoorxprayas.in/rules)
-
-Happy hacking! 🎉
+This project is licensed under the MIT License. See the LICENSE file for details.  
